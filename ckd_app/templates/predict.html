@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Predict CKD</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">  <!-- Link to the CSS file -->
+
+</head>
+<body>
+    <div class="container">
+    <h2>Enter Patient Data</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="0" max="150" required>
+    
+        <label for="bp">Blood Pressure (BP):</label>
+        <input type="number" id="bp" name="bp" min="0" max="5" required>
+        <small>Convert based on scale: 0 for low (below 80), 1 for  (80-90), 2 for normal ( 90-100),3 for (100-110),4 for(110-120),5 for (Above 120).</small>
+    
+        <label for="sg">Specific Gravity (SG):</label>
+        <input type="number" id="sg" name="sg" min="1" max="5" required>
+        <small>Convert: 1 = low (&lt;1.005), 2 =  (1.005-1.010), 3 =  (1.010-1.015),4 =  (1.015-1.020),5 =  (1.020-1.025).</small>
+    
+        <label for="al">Albumin (AL):</label>
+        <input type="number" id="al" name="al" min="0" max="5" required>
+        <small>Enter your value directly. Example: if your albumin level is 1, enter 1.</small>
+    
+        <label for="su">Sugar (SU):</label>
+        <input type="number" id="su" name="su" min="0" max="5" required>
+        <small>Enter your value directly. Example: if your sugar level is 0, enter 0.</small>
+    
+        <label for="rbc">Red Blood Cells (RBC):</label>
+        <input type="number" id="rbc" name="rbc" min="0" max="1" required>
+        <small>Convert: 1 for normal, 0 for abnormal.</small>
+    
+        <label for="pc">Pus Cells (PC):</label>
+        <input type="number" id="pc" name="pc" min="0" max="1" required>
+        <small>Convert: 1 for normal, 0 for abnormal.</small>
+    
+        <label for="pcc">Pus Cell Clumps (PCC):</label>
+        <input type="number" id="pcc" name="pcc" min="0" max="1" required>
+        <small>Convert: 1 for present, 0 for not present.</small>
+    
+        <label for="ba">Bacteria (BA):</label>
+        <input type="number" id="ba" name="ba" min="0" max="1" required>
+        <small>Convert: 1 for present, 0 for not present.</small>
+    
+        <label for="bgr">Blood Glucose Random (BGR):</label>
+        <input type="number" id="bgr" name="bgr" required>
+    
+        <label for="bu">Blood Urea (BU):</label>
+        <input type="number" id="bu" name="bu" required>
+    
+        <label for="sc">Serum Creatinine (SC):</label>
+        <input type="number" id="sc" name="sc" required>
+    
+        <label for="sod">Sodium (SOD):</label>
+        <input type="number" id="sod" name="sod" required>
+    
+        <label for="pot">Potassium (POT):</label>
+        <input type="number" id="pot" name="pot" required>
+    
+        <label for="hemo">Hemoglobin (Hemo):</label>
+        <input type="number" id="hemo" name="hemo" required>
+    
+        <label for="pcv">Packed Cell Volume (PCV):</label>
+        <input type="number" id="pcv" name="pcv" required>
+    
+        <label for="wc">White Blood Cell Count (WBC):</label>
+        <input type="number" id="wc" name="wc" required>
+    
+        <label for="rc">Red Blood Cell Count (RBC):</label>
+        <input type="number" id="rc" name="rc" required>
+    
+        <label for="htn">Hypertension (HTN):</label>
+        <input type="number" id="htn" name="htn" min="0" max="1" required>
+        <small>Enter 1 for hypertension, 0 for no hypertension.</small>
+    
+        <label for="dm">Diabetes Mellitus (DM):</label>
+        <input type="number" id="dm" name="dm" min="0" max="2" required>
+        <small>Enter 2 for diabetes, 1 for pre-diabetes, 0 for no diabetes.</small>
+    
+        <label for="cad">Coronary Artery Disease (CAD):</label>
+        <input type="number" id="cad" name="cad" min="0" max="1" required>
+        <small>Enter 1 for CAD, 0 for no CAD.</small>
+    
+        <label for="appet">Appetite (Appet):</label>
+        <input type="number" id="appet" name="appet" min="0" max="1" required>
+        <small>Enter 0 for good appetite, 1 for poor.</small>
+    
+        <label for="pe">Pedal Edema (PE):</label>
+        <input type="number" id="pe" name="pe" min="0" max="1" required>
+        <small>Enter 1 for yes, 0 for no.</small>
+    
+        <label for="ane">Anemia (ANE):</label>
+        <input type="number" id="ane" name="ane" min="0" max="1" required>
+        <small>Enter 1 for yes, 0 for no.</small>
+    
+      
+        <button type="submit">Predict</button>
+    </form>
+    
+      
+    <a href="{% url 'home' %}">Back to Home</a>
+    <script>
+        document.getElementById('predictForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent normal form submission
+    
+            const form = event.target;
+            const formData = new FormData(form);
+    
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error); // Show error in popup if exists
+                } else {
+                    alert(`Prediction: ${data.prediction}`); // Show prediction result as a popup
+                }
+                form.reset(); // Clear form fields after the prediction is displayed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred during prediction.');
+            });
+        });
+    </script>
+</body>
+</html>

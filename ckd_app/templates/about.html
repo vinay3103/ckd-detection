@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Chronic Kidney Disease</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    
+
+</head>
+<body>
+    <header>
+        <h1>Understanding Chronic Kidney Disease (CKD)</h1>
+    </header>
+
+    
+    <section id="what-is-ckd">
+        <h2>What is Chronic Kidney Disease?</h2>
+        <p>Chronic Kidney Disease (CKD) is a long-term condition characterized by a gradual loss of kidney function over time. The kidneys play a vital role in filtering waste and excess fluids from the blood, maintaining proper electrolyte balance, and producing hormones that regulate blood pressure. As CKD progresses, waste accumulates in the body, which can lead to a variety of complications, including high blood pressure, anemia, bone disease, and heart disease.</p>
+        <p>CKD is often referred to as a "silent disease" because it may not present symptoms until it has reached an advanced stage. This makes early detection crucial for slowing down the progression of the disease and improving patient outcomes.</p>
+        <img src="{% static 'images/kidneys.jpg' %}" alt="Kidneys Diagram" style="width:500px;padding-left:38%">
+    </section>
+
+
+    <section id="types-of-ckd">
+        <h2>Types of Kidney Disease</h2>
+        <ul>
+            <li><strong>Acute Kidney Injury (AKI):</strong> AKI is a sudden reduction in kidney function, often caused by illness, infection, or certain medications. It can be reversible with prompt medical treatment.</li>
+            <li><strong>Chronic Kidney Disease (CKD):</strong> CKD is a slow, progressive condition where the kidneys gradually lose function over months or years, often resulting in end-stage renal disease (ESRD).</li>
+            <li><strong>End-Stage Renal Disease (ESRD):</strong> ESRD occurs when kidney function drops below 10%, requiring dialysis or a kidney transplant to survive. This is the final stage of CKD.</li>
+            <li><strong>Polycystic Kidney Disease (PKD):</strong> PKD is a genetic disorder where fluid-filled cysts form in the kidneys, potentially leading to kidney failure over time.</li>
+        </ul>
+    </section>
+
+
+    <section id="stages-of-ckd">
+        <h2>Stages of Chronic Kidney Disease</h2>
+        <p>CKD is classified into five stages based on the glomerular filtration rate (GFR), which measures how well the kidneys are filtering blood. The lower the GFR, the more severe the stage of CKD.</p>
+        <ol>
+            <li><strong>Stage 1:</strong> Kidney damage with normal or high GFR (&gt;90 mL/min). Although the kidneys are functioning normally, there may be signs of kidney damage, such as protein in the urine.</li>
+            <li><strong>Stage 2:</strong> Kidney damage with a mild decrease in GFR (60-89 mL/min). At this stage, there may be subtle signs of kidney problems, but many people remain asymptomatic.</li>
+            <li><strong>Stage 3:</strong> Moderate decrease in GFR (30-59 mL/min). Symptoms may include fatigue, swelling, and changes in urination. Early interventions are important to prevent further progression.</li>
+            <li><strong>Stage 4:</strong> Severe decrease in GFR (15-29 mL/min). This stage is often associated with more noticeable symptoms, including fluid retention, high blood pressure, and bone disease.</li>
+            <li><strong>Stage 5:</strong> Kidney failure (GFR &lt;15 mL/min). At this stage, the kidneys are no longer able to filter blood effectively, and dialysis or a kidney transplant is necessary to sustain life.</li>
+        </ol>
+        <img src="{% static 'images/ckd_stages.jpeg' %}" alt="Stages of CKD"style="width:500px;padding-left:38%" >
+    </section>
+
+  
+    <section id="symptoms-of-ckd">
+        <h2>Common Symptoms of CKD</h2>
+        <p>CKD often progresses without symptoms in the early stages. However, as the disease advances, the following symptoms may occur:</p>
+        <ul>
+            <li>Fatigue and weakness</li>
+            <li>Swelling in the legs, ankles, or feet (edema)</li>
+            <li>Shortness of breath due to fluid buildup in the lungs</li>
+            <li>Changes in urination patterns, such as frequent urination or foamy urine</li>
+            <li>Loss of appetite, nausea, and vomiting</li>
+            <li>Unexplained weight loss</li>
+            <li>High blood pressure that is difficult to control</li>
+        </ul>
+        <img src="{% static 'images/symptoms.jpg' %}" alt="Symptoms Diagram"style="width:500px;padding-left:38%" >
+
+    </section>
+
+   
+    <section id="risk-factors">
+        <h2>Risk Factors for CKD</h2>
+        <p>Several factors can increase the risk of developing CKD, including:</p>
+        <ul>
+            <li><strong>Diabetes:</strong> High blood sugar can damage the kidneys over time, making diabetes the leading cause of CKD.</li>
+            <li><strong>High blood pressure (Hypertension):</strong> Hypertension can damage the blood vessels in the kidneys, reducing their ability to function properly.</li>
+            <li><strong>Family history:</strong> A family history of kidney disease increases the risk of developing CKD.</li>
+            <li><strong>Obesity:</strong> Being overweight puts extra strain on the kidneys and increases the risk of CKD.</li>
+            <li><strong>Age:</strong> The risk of CKD increases with age, particularly after age 60.</li>
+            <li><strong>Smoking:</strong> Smoking can reduce blood flow to the kidneys and worsen kidney function.</li>
+        </ul>
+        <img src="{% static 'images/risk_factors.png' %}" alt="CKD Risk Factors" style="width:500px;padding-left:38%">
+    </section>
+
+    
+    <section id="precautions">
+        <h2>Precautions and Prevention of CKD</h2>
+        <p>While CKD cannot always be prevented, certain precautions can help reduce the risk or slow down the progression of the disease:</p>
+        <ul>
+            <li>Maintain a healthy diet rich in fruits, vegetables, and whole grains while limiting salt and processed foods.</li>
+            <li>Control blood sugar levels if you have diabetes.</li>
+            <li>Monitor and manage blood pressure.</li>
+            <li>Exercise regularly to maintain a healthy weight and improve cardiovascular health.</li>
+            <li>Stay hydrated by drinking plenty of water, but avoid overhydration.</li>
+            <li>Avoid smoking and excessive alcohol consumption.</li>
+            <li>Get regular checkups, especially if you have risk factors for CKD.</li>
+        </ul>
+        <img src="{% static 'images/precautions.webp' %}" alt="Healthy Kidney Tips"style="width:500px;padding-left:38%" >
+    </section>
+    <div class="btn-group">
+        <a href="{% url 'home' %}">Back</a>
+        
+
+        </div>
+    <footer>
+    </footer>
+</body>
+</html>
